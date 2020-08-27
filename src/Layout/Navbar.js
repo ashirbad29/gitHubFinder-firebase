@@ -38,7 +38,15 @@ const Header = () => {
 				<Nav className="ml-auto" navbar>
 					{context.user ? (
 						<NavItem>
-							<NavLink tag={Link} to="/" className="text-white">
+							<NavLink
+								onClick={() => {
+									context.setUser(null);
+								}}
+								className="text-white"
+								style={{
+									cursor: 'pointer',
+								}}
+							>
 								Logout
 							</NavLink>
 						</NavItem>
@@ -50,7 +58,7 @@ const Header = () => {
 								</NavLink>
 							</NavItem>
 							<NavItem>
-								<NavLink tag={Link} to="/" className="text-white">
+								<NavLink tag={Link} to="/signin" className="text-white">
 									Login
 								</NavLink>
 							</NavItem>
