@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // react router
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Toast
 import { ToastContainer } from 'react-toastify';
