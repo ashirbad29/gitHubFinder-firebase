@@ -17,7 +17,7 @@ import { UserContext } from '../Context/UserContext';
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const userContext = useContext(UserContext);
+	const context = useContext(UserContext);
 
 	const toggle = () => {
 		setIsOpen(!isOpen);
@@ -30,24 +30,32 @@ const Header = () => {
 					GithubFinder
 				</Link>
 			</NavbarBrand>
+			<NavbarText className="text-white">
+				{context.user?.email ? context.user.email : ''}
+			</NavbarText>
 			<NavbarToggler onClick={toggle} />
 			<Collapse isOpen={isOpen} navbar>
 				<Nav className="ml-auto" navbar>
-					<NavItem>
-						<NavLink tag={Link} to="/" className="text-white">
-							Signup
-						</NavLink>
-					</NavItem>
-					<NavItem>
-						<NavLink tag={Link} to="/" className="text-white">
-							Singnin
-						</NavLink>
-					</NavItem>
-					<NavItem>
-						<NavLink tag={Link} to="/" className="text-white">
-							Logout
-						</NavLink>
-					</NavItem>
+					{context.user ? (
+						<NavItem>
+							<NavLink tag={Link} to="/" className="text-white">
+								Logout
+							</NavLink>
+						</NavItem>
+					) : (
+						<>
+							<NavItem>
+								<NavLink tag={Link} to="/signup" className="text-white">
+									Signup
+								</NavLink>
+							</NavItem>
+							<NavItem>
+								<NavLink tag={Link} to="/" className="text-white">
+									Login
+								</NavLink>
+							</NavItem>
+						</>
+					)}
 				</Nav>
 			</Collapse>
 		</Navbar>
